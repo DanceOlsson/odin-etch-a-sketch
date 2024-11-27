@@ -23,21 +23,24 @@ function paintBoxes () {
     container.addEventListener('mousedown', () => {
         isMouseDown = true;
     })
-
     container.addEventListener('mouseup', () => {
         isMouseDown = false;
     })
 
-    gridBox.forEach(box => {
+    gridBox.forEach(box => {  // every individual box gets an EventListener :)
         box.addEventListener('mousemove', () => {
             if (isMouseDown) {
                 box.style.backgroundColor = 'black';
             }
         })
+
+        box.addEventListener('mousedown', () => {
+            box.style.backgroundColor = 'black';
+        })
     })
 }
 
-createGrid(16);
+createGrid(40);
 paintBoxes();
 
 
