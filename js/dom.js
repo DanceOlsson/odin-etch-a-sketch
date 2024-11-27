@@ -40,6 +40,34 @@ function paintBoxes () {
     })
 }
 
+/*
+Function createNewGridButton:
+    Create and add button element to page
+
+    When button is clicked:
+        Bring up a prompt box asking user to put in button
+        Validate input:
+            * Check if number
+            * Check if number is 4-100
+            * If invalid, show error message
+        
+    If input is valid:
+        Remove existing gridbox
+        Call createGrid with the prompt size
+        call paintBoxes to enable drawing
+*/
+function createNewGridButton () {
+    const newGridButton = document.createElement('button');
+    newGridButton.textContent = 'New Grid :)';
+    document.body.prepend(newGridButton);
+
+    newGridButton.addEventListener('click', () => {
+        const gridSize = prompt('Enter a new size (4-100):');
+    })
+}
+
+
+createNewGridButton();
 createGrid(40);
 paintBoxes();
 
