@@ -16,4 +16,29 @@ function createGrid(size) {
     }
 }
 
+//function to fill in griBoxes with color
+function paintBoxes () {
+    const gridBox =document.querySelectorAll('.grid-box');
+
+    container.addEventListener('mousedown', () => {
+        isMouseDown = true;
+    })
+
+    container.addEventListener('mouseup', () => {
+        isMouseDown = false;
+    })
+
+    gridBox.forEach(box => {
+        box.addEventListener('mousemove', () => {
+            if (isMouseDown) {
+                box.style.backgroundColor = 'black';
+            }
+        })
+    })
+}
+
 createGrid(16);
+paintBoxes();
+
+
+
