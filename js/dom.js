@@ -19,6 +19,7 @@ function createGrid(size) {
 //function to fill in griBoxes with color
 function paintBoxes () {
     const gridBox =document.querySelectorAll('.grid-box');
+    let isMouseDown = false;
 
     container.addEventListener('mousedown', () => {
         isMouseDown = true;
@@ -59,17 +60,24 @@ Function createNewGridButton:
 function createNewGridButton () {
     const newGridButton = document.createElement('button');
     newGridButton.textContent = 'New Grid :)';
-    document.body.prepend(newGridButton);
+    container.prepend(newGridButton);
 
     newGridButton.addEventListener('click', () => {
         const gridSize = prompt('Enter a new size (4-100):');
+        const gridSizeNumber = parseInt(gridSize); 
+        if (!isNaN(gridSizeNumber) && gridSizeNumber >= 4 && gridSizeNumber <= 100) {
+            container.innerHTML = '';
+            createNewGridButton();
+            createGrid(gridSizeNumber);
+            paintBoxes();
+        }
     })
 }
 
 
 createNewGridButton();
-createGrid(40);
-paintBoxes();
+// createGrid(40);
+// paintBoxes();
 
 
 
