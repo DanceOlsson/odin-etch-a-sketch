@@ -2,6 +2,8 @@ const container = document.getElementById("container");
 
 // Function that creates a grid
 function createGrid(size) {
+    const boxSize = 400 / size;
+    
     for (let i = 0; i < size; i++) {
         const row = document.createElement("div");
         row.classList.add('grid-row');
@@ -10,6 +12,8 @@ function createGrid(size) {
         for (let j = 0; j < size; j++) {
             const box = document.createElement('div');
             box.classList.add('grid-box');
+            box.style.width = `${boxSize}px`;
+            box.style.height = `${boxSize}px`;
             row.appendChild(box);
         }
         container.appendChild(row);
@@ -63,9 +67,9 @@ function createNewGridButton () {
     container.prepend(newGridButton);
 
     newGridButton.addEventListener('click', () => {
-        const gridSize = prompt('Enter a new size (4-100):');
+        const gridSize = prompt('Enter a new size (1-100):');
         const gridSizeNumber = parseInt(gridSize); 
-        if (!isNaN(gridSizeNumber) && gridSizeNumber >= 4 && gridSizeNumber <= 100) {
+        if (!isNaN(gridSizeNumber) && gridSizeNumber >= 1 && gridSizeNumber <= 100) {
             container.innerHTML = '';
             createNewGridButton();
             createGrid(gridSizeNumber);
